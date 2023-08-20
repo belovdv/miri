@@ -512,6 +512,10 @@ pub fn phase_runner(mut binary_args: impl Iterator<Item = String>, phase: Runner
                 );
             }
         }
+        // See <https://github.com/rust-lang/miri/pull/ to be done>.
+        if name == "CARGO_MAKEFLAGS" {
+            continue;
+        }
         cmd.env(name, val);
     }
 
